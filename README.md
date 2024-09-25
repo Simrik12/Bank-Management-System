@@ -1,1 +1,3 @@
 # Bank-Management-System
+
+This project is a simple bank management system in C++ using the principles of Object-Oriented Programming (OOP). It will allow the users to manage savings accounts, open an account, deposite or withdraw money, check account details and close their accounts. This bank management system will also apply interest (2% monthly) to all accounts (as all accounts are savings accounts).To compile the code we will use g++ main.cpp bank.cpp -o BankManagementSystem and to run the code we will use ./BankManagementSystem.
