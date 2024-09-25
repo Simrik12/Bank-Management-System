@@ -12,7 +12,8 @@ int main () {
         cout << "3. Withdraw money\n";
         cout << "4. Check account details\n";
         cout << "5. Close an account\n";
-        cout << "6. Exit\n";
+        cout << "6. Apply Interest to all accounts\n";   
+        cout << "7. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -38,12 +39,16 @@ int main () {
             break;
 
             case 6:
+            bank.applyIntertestToAll();
+            break;
+
+            case 7:
             cout << "Exiting the system.\n";    
             break;
         default:
             cout << "The choice is invalid! Please try again.\n";    //Handling the invalid input
     }
-}  while (choice != 6);    //Continuing the loop until the user chooses to exit
+}  while (choice != 7);    //Continuing the loop until the user chooses to exit
 
 return 0;
 }

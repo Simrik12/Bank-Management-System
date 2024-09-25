@@ -1,26 +1,33 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 //Constant to define the maximum number of accounts allowed
 const int MAX_ACCOUNTS = 100;
 
-// Account class to represent the individual bank accounts
+// Class representing a bank account
 class Account {
     public:
       int accountNumber;
       string name;
+      string dateofbirth;
+      string phoneNumber;
       double balance;
+      string accounttype;
 
       //Default constructor
       Account();
 
       //Parameterized constructor to initialize an account
-      Account (int accNo, string accName, double initialBalance);
+      Account (int accNo, string accName, string dob, string phone, double initialBalance, string accType);
+    
+      //Applying 2% per month for savin accounts)
+      void applyInterest();
 };
 
-//Bank class handles the operations related to the bank accounts
+//Class representing the bank system
 class Bank {
     private:
     Account accounts [MAX_ACCOUNTS];    //Array to store the accounts
@@ -35,4 +42,5 @@ class Bank {
     void withdraw();        //Function to withdraw money
     void checkDetails();    //Function to check the details
     void closeAccount();    //Function to close an account
+    void applyIntertestToAll();  //Applying interest to all saving accounts
 };

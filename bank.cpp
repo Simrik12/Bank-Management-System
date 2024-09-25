@@ -4,11 +4,18 @@
 Bank::Bank() : nextAccountNumber(1001), totalAccounts(0) {}
 
 // Default constructor for Account class
-Account::Account() : accountNumber(0), name(""), balance(0.0) {}
+Account::Account() : accountNumber(0), name(""), dateofbirth (""), phoneNumber(""), balance(0.0), accounttype("Savings") {}
 
 // Parameterized constructor for Account class
-Account::Account(int accNo, string accName, double initialBalance)
-    : accountNumber(accNo), name(accName), balance(initialBalance) {}
+Account::Account(int accNo, string accName, string dob, string phone, double initialBalance, string accType)
+    : accountNumber(accNo), name(accName), dateofbirth (dob), phoneNumber (phone), balance(initialBalance), accounttype (accType) {}
+
+//Function to apply 2% interest to saving accounts
+void Account:: applyInterest() {
+    if (accounttype == "Savings") {
+        balance += balance *0.02;
+    }
+}
 
 // Function to open a new account
 void Bank::openAccount() {
@@ -32,12 +39,23 @@ void Bank::openAccount() {
     cout << "Enter your initial deposit: ";
     cin >> initialDeposit;
 
-    accounts[totalAccounts] = Account(nextAccountNumber, name, initialDeposit);
-    cout << "Your account is created successfully! Your account number is " 
+    //Setting the account type to "Savings" as it is only allowed
+    string accounttype = "Savings";
+
+    accounts[totalAccounts] = Account(nextAccountNumber, name, dob, phone, initialDeposit, accounttype);
+    cout << "Your savings account is created successfully! Your account number is " 
          << nextAccountNumber << ".\n";
 
     nextAccountNumber++;  // Increment of account number for the next new account
     totalAccounts++;  // Increment of the number of accounts
+}
+
+//Function to aplly Interest to all savings accounts
+void Bank:: applyIntertestToAll() {
+    for (int i = 0; i <totalAccounts; i++) {
+        accounts[i].applyInterest();
+    }
+    cout << "Interest is applied to all savings accounts!\n";
 }
 
 // Function to deposit money into an account
